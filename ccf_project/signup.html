@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Professional Registration Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #eef2f3, #8e9eab);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      padding: 40px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: #333;
+    }
+
+    .logo {
+      width: 80px;
+      margin-top: 10px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+      transition: 0.2s ease;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    button {
+      grid-column: 1 / -1;
+      background-color: #007bff;
+      color: white;
+      padding: 15px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.95em;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Welcome to CCF Registration</h1>
+      <img src="logo.png" alt="Logo" class="logo">
+    </header>
+
+    <form id="registerForm" action="signup.php" method="POST">
+  <!-- Group Nickname + Password in one row -->
+  <div class="nickname-password-group" style="grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div>
+      <label for="nickname">Nickname*</label>
+      <input type="text" id="nickname" name="nickname" required>
+    </div>
+    <div>
+      <label for="password">Password*</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+  </div>
+
+      <div>
+        <label for="firstName">First Name*</label>
+        <input type="text" id="firstName" name="firstName" required>
+      </div>
+
+      <div>
+        <label for="lastName">Last Name*</label>
+        <input type="text" id="lastName" name="lastName" required>
+      </div>
+
+      <div>
+        <label for="username">Username*</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+
+      <div>
+        <label for="email">Email Address*</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div>
+        <label for="mobileNumber">Contact Number*</label>
+        <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="+63" required>
+      </div>
+
+      <div>
+        <label for="birthMonth">Birthday (Month)*</label>
+        <input type="text" id="birthMonth" name="birthMonth" placeholder="e.g. August" required>
+      </div>
+
+      <div>
+        <label for="birthYear">Birth Year*</label>
+        <input type="number" id="birthYear" name="birthYear" required>
+      </div>
+
+      <div>
+        <label for="gender">Gender*</label>
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Select your gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="lifeStage">Life Stage*</label>
+        <select id="lifeStage" name="lifeStage" required>
+          <option value="" disabled selected>Select life stage</option>
+          <option value="Single">Single</option>
+          <option value="Married">Married</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="country">Country*</label>
+        <input type="text" id="country" name="country" value="Philippines" required>
+      </div>
+
+      <div>
+        <label for="region">Region*</label>
+        <input type="text" id="region" name="region" value="National Capital Region" required>
+      </div>
+
+      <div>
+        <label for="city">City*</label>
+        <input type="text" id="city" name="city" value="Pasig" required>
+      </div>
+
+      <div>
+        <label for="glcId">GLC ID #</label>
+        <input type="text" id="glcId" name="glcId">
+      </div>
+
+      <div>
+        <label for="occupation">Occupation</label>
+        <input type="text" id="occupation" name="occupation" value="Student">
+      </div>
+
+      <div>
+        <label for="industry">Industry</label>
+        <input type="text" id="industry" name="industry">
+      </div>
+
+      <div>
+        <label for="purpose">Purpose of Registration</label>
+        <input type="text" id="purpose" name="purpose">
+      </div>
+
+      <div>
+        <label for="ccfSatellite">Church Affiliation*</label>
+        <input type="text" id="ccfSatellite" name="ccfSatellite" value="CCF" required>
+      </div>
+
+      <div>
+        <label for="placeOfWorship">Place of Worship*</label>
+        <input type="text" id="placeOfWorship" name="placeOfWorship" value="Main - CCF Center" required>
+      </div>
+
+      <div>
+        <label for="worshipDay">Worship Day*</label>
+        <select id="worshipDay" name="worshipDay" required>
+          <option value="Sunday">Sunday</option>
+          <option value="Saturday">Saturday</option>
+          <option value="Friday">Friday</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="worshipTime">Worship Time*</label>
+        <input type="text" id="worshipTime" name="worshipTime" value="3:00 pm" required>
+      </div>
+
+      <div>
+        <label for="registeredSince">Registered Since</label>
+        <input type="text" id="registeredSince" name="registeredSince" value="Jul 2022">
+      </div>
+
+      <div>
+        <label for="areaPastor">Area Pastor</label>
+        <input type="text" id="areaPastor" name="areaPastor" value="James Whelchel">
+      </div>
+
+      <button type="submit">Register</button>
+	  <p id="message" style="color: green;"></p>
+
+	  <script>
+       document.getElementById("registerForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevents actual form submission
+        document.getElementById("message").textContent = "Registered";
+        this.submit(); // Submits the form after showing the message
+       });
+	 </script>
+
+      <footer>
+        Already a user? <a href="loginn.html">Log in</a>
+      </footer>
+    </form>
+  
+
+  </div>
+
+</body>
+</html>

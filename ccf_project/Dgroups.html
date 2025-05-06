@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dgroup Details</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+    body {
+      background: url('background.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-container {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 1000px;
+      color: white;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    }
+    h2, p {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 16px;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #ccc;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    select option {
+      color: #000;
+    }
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .btn {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 0 5px;
+      transition: opacity 0.3s ease;
+    }
+    .back-btn {
+      background: #009688;
+      color: #fff;
+    }
+    .next-btn {
+      background: #007BFF;
+      color: white;
+    }
+    .btn:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Dgroup Details</h2>
+    <p>Fill out the discipleship group information below.</p>
+    <form action="submit_dgroup.php" method="POST">
+      <input type="text" name="dgroup_name" placeholder="Name of Dgroup" required />
+      <input type="text" name="dgroup_leader" placeholder="Dgroup Leader" required />
+      <textarea name="time_availability" placeholder="Time & Availability" required></textarea>
+      <input type="text" name="location" placeholder="Location" required />
+
+      <select name="group_type" required>
+        <option value="">Select Group Type</option>
+        <option value="men">Men</option>
+        <option value="women">Women</option>
+        <option value="mixed">Mixed</option>
+        <option value="online">Online</option>
+        <option value="face_to_face">Face-to-Face</option>
+      </select>
+
+      <select name="life_stage" required>
+        <option value="">Select Life Stage</option>
+        <option value="student">Student</option>
+        <option value="single_professional">Single Professional</option>
+        <option value="married">Married</option>
+        <option value="senior">Senior</option>
+      </select>
+
+      <textarea name="actions_notes" placeholder="Actions or Notes (optional)"></textarea>
+
+      <div class="btn-container">
+        <button type="button" class="btn back-btn">Back</button>
+        <button type="submit" class="btn next-btn">Next</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

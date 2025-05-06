@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .profile img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #007BFF;
+    }
+
+    .info h3 {
+      margin-top: 15px;
+      font-size: 1.5rem;
+      color: #007BFF;
+    }
+
+    ul.details {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+      gap: 10px 20px;
+    }
+
+    ul.details li {
+      background: #f9f9f9;
+      padding: 10px 15px;
+      border-left: 4px solid #007BFF;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .group-box {
+      background-color: #e9f2ff;
+      border-left: 5px solid #007BFF;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    .star {
+      color: #f39c12;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .profile {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      ul.details {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="profile-container">
+      <h2>User Profile</h2>
+      <div class="profile">
+        <img class="profile-img" src="" alt="Profile Image">
+        <div class="info">
+          <p><strong>Nickname:</strong> <span id="nickname">Loading...</span></p>
+          <p><strong>Username:</strong> <span id="username">Loading...</span></p>
+          <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+          <p><strong>Gender:</strong> <span id="gender">Loading...</span></p>
+          <p><strong>Birthday:</strong> <span id="birthday">Loading...</span></p>
+          <p><strong>Life Stage:</strong> <span id="life-stage">Loading...</span></p>
+          <p><strong>Contact:</strong> <span id="contact">Loading...</span></p>
+          <p><strong>Location:</strong> <span id="location">Loading...</span></p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Badges</h2>
+        <p>User has no badges.</p>
+      </div>
+
+      <div class="section">
+        <h2>Groups I'm Following (Upline)</h2>
+        <div class="group-box">
+          <span class="star">&#9733; Primary Group</span> Albert Sarmiento 2022 <br>
+          <strong>Saturday, 4:30pm to 6:00pm (Every week)</strong>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Groups I'm Leading (Downline)</h2>
+        <div class="group-box">
+          Warren Dgroup <br>
+          <strong>Saturday, 4:30pm to 6:00pm (Every week)</strong>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Relationships</h2>
+        <button>Add New Relationship</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fetch user data from the PHP API
+    fetch('http://127.0.0.1/path/to/your/php/script.php', {
+      method: 'GET',
+      credentials: 'include', // Include session cookies
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to load user data');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.error) {
+          document.getElementById('profile-container').innerHTML = `<p style='color: red;'>${data.error}</p>`;
+        } else {
+          // Populate user data into the profile page
+          document.getElementById('nickname').textContent = data.nickname;
+          document.getElementById('username').textContent = data.username;
+          document.getElementById('email').textContent = data.email;
+          document.getElementById('gender').textContent = data.gender;
+          document.getElementById('birthday').textContent = `${data.birth_month} ${data.birth_year}`;
+          document.getElementById('life-stage').textContent = data.life_stage;
+          document.getElementById('contact').textContent = data.contact;
+          document.getElementById('location').textContent = `${data.city}, ${data.region}, ${data.country}`;
+
+          // Set profile image if available
+          document.querySelector('img.profile-img').src = data.image_url;
+        }
+      })
+      .catch(error => {
+        document.getElementById('profile-container').innerHTML = `<p style='color: red;'>${error.message}</p>`;
+      });
+  </script>
+</body>
+</html>

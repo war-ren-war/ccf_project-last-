@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: url('background.jpg') no-repeat center center/cover;
+        }
+        .container {
+            display: flex;
+            max-width: 900px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            width: 90%;
+        }
+        .forgot-section {
+            flex: 1;
+            padding: 20px;
+            background: rgba(0, 150, 136, 0.8);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .forgot-section h2 {
+            margin-bottom: 20px;
+        }
+        .forgot-btn {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .forgot-btn:hover {
+            background: white;
+            color: #009688;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background: #009688;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .submit-btn:hover {
+            background: #00796b;
+        }
+        .back-link {
+            display: block;
+            margin-top: 10px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        function redirectToLogin() {
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="forgot-section">
+            <h2>Forgot Password</h2>
+            <p>Enter your email address below, and we'll send you a link to reset your password.</p>
+            <form action="reset-password.php" method="post">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="submit-btn">Send Reset Link</button>
+            </form>
+            <a href="loginn.html" class="back-link">Back to Login</a>
+        </div>
+    </div>
+
+</body>
+</html>

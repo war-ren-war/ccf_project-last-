@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CCF Locations</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+    body {
+      background: url('background.jpg') no-repeat center center/cover;
+      background-size: cover;
+      color: white;
+    }
+    .container {
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      overflow-y: auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    .filters select {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      width: 100%;
+      max-width: 250px;
+      font-size: 16px;
+    }
+    .info-box {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 800px;
+      border-radius: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      margin-top: 10px;
+    }
+    .contact-info {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .contact-info a {
+      color: #009688;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>CCF Locations</h2>
+
+    <div class="filters">
+      <select id="countrySelect">
+        <option value="">Choose Country</option>
+        <option value="PH">Philippines</option>
+        <option value="AU">Australia</option>
+        <option value="BH">Bahrain</option>
+        <option value="BG">Belgium</option>
+        <option value="BN">Brunei</option>
+        <option value="CA">Canada</option>
+        <option value="FL">Finland</option>
+        <option value="FR">France</option>
+        <option value="DE">Germany</option>
+        <option value="HK">Hong Kong</option>
+        <option value="IE">Ireland</option>
+        <option value="IT">Italy</option>
+        <option value="JP">Japan</option>
+        <option value="KW">Kuwait</option>
+        <option value="MO">Macau</option>
+        <option value="MY">Malaysia</option>
+        <option value="NL">Netherlands</option>
+        <option value="NZ">New Zealand</option>
+        <option value="NO">Norway</option>
+        <option value="OM">Oman</option>
+        <option value="PL">Poland</option>
+        <option value="QA">Qatar</option>
+        <option value="SA">Saudi Arabia</option>
+        <option value="SG">Singapore</option>
+        <option value="SP">Spain</option>
+        <option value="AE">United Arab Emirates (UAE)</option>
+        <option value="GB">United Kingdom (UK)</option>
+        <option value="US">United States of America (USA)</option>
+        <option value="VN">Vietnam</option>
+      </select>
+
+      <select id="satelliteSelect">
+        <option value="">Choose Location</option>
+      </select>
+    </div>
+
+    <div class="info-box" id="locationDetails" style="display:none;">
+      <h4>Address Details:</h4>
+      <div id="addressText"></div>
+      <p><strong>Phone:</strong> <span id="contactLink"></span></p>
+      <p><strong>Worship:</strong> <span id="worshipTime"></span></p>
+
+      <h4>Directions and Map:</h4>
+      <p>
+        <a id="directionsLink" href="#" target="_blank">Directions</a> |
+        <a id="websiteLink" href="#" target="_blank">Website</a> |
+        <a id="mapLink" href="#" target="_blank">View Full Map</a>
+      </p>
+      <iframe id="mapFrame" src=""></iframe>
+    </div>
+
+    <div class="contact-info">
+      Contact us for details: <strong><a href="mailto:beyond@ccf.org.ph">beyond@ccf.org.ph</a></strong>
+    </div>
+  </div>
+
+  <script>
+    const satellites = {
+      "ccf-wellington": {
+        country: "NZ",
+        name: "CCF Wellington",
+        address: "Khandallah Town Hall & Cornerstone Community Centre, 11 Ganges Road, Khandallah",
+        city: "Wellington, New Zealand",
+        contact: "https://www.facebook.com/CCFWellingtonNZ/",
+        worship: "Sundays: 10:00am",
+        mapQuery: "Khandallah Town Hall & Cornerstone Community Centre, 11 Ganges Road, Khandallah, Wellington, New Zealand"
+      },
+      "ccf-aucklandnorth": {
+        country: "NZ",
+        name: "CCF Auckland North",
+        address: "Somewhere Street",
+        city: "Auckland North, New Zealand",
+        contact: "https://www.facebook.com/CCFAucklandNorth/",
+        worship: "Sundays: 9:00am",
+        mapQuery: "Auckland North, New Zealand"
+      },
+      "ccf-manila": {
+        country: "PH",
+        name: "CCF Manila",
+        address: "Ortigas Ave, Pasig City",
+        city: "Metro Manila, Philippines",
+        contact: "https://www.facebook.com/CCFMain",
+        worship: "Sundays: 9:00am / 11:00am",
+        mapQuery: "Ortigas Ave, Pasig City, Philippines"
+      },
+      "ccf-sydney": {
+        country: "AU",
+        name: "CCF Sydney",
+        address: "123 Church Road",
+        city: "Sydney, Australia",
+        contact: "https://www.facebook.com/CCFSydney",
+        worship: "Sundays: 10:30am",
+        mapQuery: "123 Church Road, Sydney, Australia"
+      }
+    };
+
+    const countrySelect = document.getElementById("countrySelect");
+    const satelliteSelect = document.getElementById("satelliteSelect");
+    const locationDetails = document.getElementById("locationDetails");
+
+    const addressText = document.getElementById("addressText");
+    const contactLink = document.getElementById("contactLink");
+    const worshipTime = document.getElementById("worshipTime");
+    const directionsLink = document.getElementById("directionsLink");
+    const websiteLink = document.getElementById("websiteLink");
+    const mapLink = document.getElementById("mapLink");
+    const mapFrame = document.getElementById("mapFrame");
+
+    function updateSatellites() {
+      const selectedCountry = countrySelect.value;
+      satelliteSelect.innerHTML = '<option value="">Choose Location</option>';
+
+      for (const [key, info] of Object.entries(satellites)) {
+        if (info.country === selectedCountry) {
+          const option = document.createElement("option");
+          option.value = key;
+          option.textContent = info.name;
+          satelliteSelect.appendChild(option);
+        }
+      }
+
+      locationDetails.style.display = "none";
+    }
+
+    function updateLocationDetails() {
+      const selectedLocation = satelliteSelect.value;
+      if (!selectedLocation || !satellites[selectedLocation]) return;
+
+      const info = satellites[selectedLocation];
+
+      addressText.textContent = `${info.address}, ${info.city}`;
+      contactLink.innerHTML = `<a href="${info.contact}" target="_blank">${info.contact}</a>`;
+      worshipTime.textContent = info.worship;
+
+      const mapURL = `https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=${encodeURIComponent(info.mapQuery)}&t=h&ie=UTF8&z=14&output=embed`;
+
+      directionsLink.href = `https://maps.google.com/maps?saddr=current+location&daddr=${encodeURIComponent(info.mapQuery)}`;
+      websiteLink.href = info.contact;
+      mapLink.href = `https://maps.google.com/?q=${encodeURIComponent(info.mapQuery)}`;
+      mapFrame.src = mapURL;
+
+      locationDetails.style.display = "block";
+    }
+
+    countrySelect.addEventListener("change", updateSatellites);
+    satelliteSelect.addEventListener("change", updateLocationDetails);
+  </script>
+
+</body>
+</html>

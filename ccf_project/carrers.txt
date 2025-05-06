@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Job Listings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 90%;
+      height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .job-card {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .job-card h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .job-card ul {
+      padding-left: 20px;
+    }
+
+    .job-card ul li {
+      margin-bottom: 5px;
+    }
+
+    /* Optional: Customize scrollbar */
+    .container::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .container::-webkit-scrollbar-thumb {
+      background-color: #aaa;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="job-card">
+      <h3>FIXED ASSETS TEAM LEADER</h3>
+      <ul>
+        <li>Bachelor’s degree in Accounting, Finance, Business Administration, or a related field</li>
+        <li>Knowledgeable in accounting principles, financial statements, and generally accepted accounting principles (GAAP)</li>
+        <li>Has experience in accounting, finance, or a related field is necessary</li>
+        <li>Has the ability to motivate, mentor, lead and develop team members</li>
+        <li>Interpersonal skills and possess strong analytical and problem-solving abilities</li>
+      </ul>
+    </div>
+
+    <div class="job-card">
+      <h3>BUYER</h3>
+      <ul>
+        <li>With at least 2–3 years experience</li>
+        <li>Knowledge of Oracle or similar system for finance/procurement</li>
+        <li>Good time management skills and ability to multi-task, detail-oriented</li>
+        <li>Good written and verbal communication skills</li>
+        <li>Proficient in MS Office</li>
+        <li>CCF DGroup Member/Leader</li>
+      </ul>
+    </div>
+
+    <div class="job-card">
+      <h3>SENIOR INTERNAL AUDITOR</h3>
+      <ul>
+        <li>A bachelor’s degree in Accountancy, Internal Auditing, Finance, Business Administration, Economics or related field</li>
+        <li>At least five (5) years experience in internal auditing, risk management or compliance in a reputable company</li>
+        <li>At least three (3) years of experience in leading or supervising a team of auditors</li>
+        <li>Having a specialized degree or certification in auditing, compliance or risk management is a plus</li>
+        <li>Knowledge of Philippine Financial Reporting Standards (PFRS) or Philippine Standards on Auditing (PSA)</li>
+        <li>Knowledge of risk management frameworks (i.e. COSO framework, ISO 3100) and internal control principles</li>
+        <li>Proficiency in Microsoft Excel or other specialized audit software</li>
+        <li>Strong verbal and communication skills with ability to present audit findings and recommendation clearly to management</li>
+        <li>Familiarity with auditing and financial software such as Oracle and other accounting systems is advantageous</li>
+      </ul>
+    </div>
+	
+	<div class="job-card">
+  <h3>JUNIOR INTERNAL AUDITOR</h3>
+  <ul>
+    <li>A Bachelor’s degree in Accountancy, Finance, Business Administration, Economics or related field</li>
+    <li>At least 2 years experience in internal auditing, risk management or compliance in a reputable company</li>
+    <li>Having a specialized degree or certification in auditing (CIA/CPA) or risk management is a plus</li>
+    <li>Familiarity with Philippine Financial Reporting Standards (PFRS) or Philippine Standards on Auditing (PSA)</li>
+    <li>Familiarity with risk management frameworks (i.e. COSO framework, ISO 3100) and internal control principles</li>
+    <li>Proficiency in Microsoft Excel or other specialized audit software</li>
+    <li>Strong verbal and communication skills with ability to present audit findings and recommendation clearly to management</li>
+    <li>Familiarity with auditing and financial software such as Oracle and other accounting systems is advantageous</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>GROUP FINANCE ANALYSTS (CCF Center, Pasig)</h3>
+  <ul>
+    <li>Bachelor’s degree in Accounting, Finance, Business Administration, or a related field</li>
+    <li>At least 2 years relevant work experience</li>
+    <li>Analytical and quantitative skills to analyze financial data, identify trends, and draw meaningful insights</li>
+    <li>Knowledgeable in Financial modeling, financial analysis technique, and data manipulation</li>
+    <li>Oracle knowledge and experience is an advantage</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>HUB ACCOUNTANT (CCFMI, NCP Satellites and ICP)</h3>
+  <ul>
+    <li>University/Bachelor’s degree in Accounting and Finance</li>
+    <li>CPA board passer</li>
+    <li>At least 2 years relevant experience in all Accounting areas such as Financial Planning, A/R, A/P, General Ledger, Fixed Assets, etc.</li>
+    <li>Familiarity with accounting software and enterprise resource planning (ERP) systems</li>
+    <li>Strong attention to detail and accuracy in financial data management</li>
+    <li>Ability to perform variance analysis and interpret financial results effectively</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>FINANCE ANALYST (ACCOUNTS PAYABLE)</h3>
+  <ul>
+    <li>Bachelor's degree in finance, accounting, business administration, or a related field</li>
+    <li>Familiar with accounts payable processes, invoice reconciliation, and vendor management</li>
+    <li>Understanding of basic accounting principles and accounts payable practices</li>
+    <li>Attention to detail, accuracy in processing invoices, reconciling accounts, and maintaining documentation</li>
+    <li>Ability to identify errors, discrepancies, and anomalies in financial records</li>
+    <li>Fresh graduates are welcome</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>FINANCE ANALYST (GENERAL LEDGER)</h3>
+  <ul>
+    <li>University/Bachelor’s degree in Accounting and Finance</li>
+    <li>Knowledgeable in accounting principles, financial statements, and generally accepted accounting principles (GAAP)</li>
+    <li>Familiar with financial analysis, budgeting, forecasting, and internal controls</li>
+    <li>Familiar with accounting software and enterprise resource planning (ERP) systems</li>
+    <li>Strong attention to detail and accuracy in financial data management</li>
+    <li>Ability to perform variance analysis and interpret financial results effectively</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>OPERATIONS MANAGER (For The Win/Sports Ministry)</h3>
+  <ul>
+    <li>Bachelor’s degree in sports management, physical education, or a related field (Master’s degree preferred)</li>
+    <li>Proven experience in sports program management, coaching, or athletic development</li>
+    <li>Strong leadership, communication, and organizational skills</li>
+    <li>Passion for developing young athletes into both skilled players and individuals of strong character</li>
+    <li>Familiarity with budgeting, financial management, and sponsorship acquisition</li>
+    <li>Understanding of integrating faith-based values into sports training and mentorship</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>IN-HOUSE LEGAL COUNSEL</h3>
+  <ul>
+    <li>Member of the Philippine Bar</li>
+    <li>With at least three (3) years of experience working in a reputable law firm as an associate and/or as in-house counsel in, at least, a mid-sized corporation</li>
+    <li>Highly proficient in taxation law and tax compliance (having a CPA degree is a plus)</li>
+    <li>Proficiency in contract management, corporate housekeeping, corporate special projects management, regulatory compliance, legal research, legal advisory, and client management</li>
+    <li>Active member of CCF for at least three (3) years</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>BEYOND – ADMIN ASSISTANT / RESEARCHER FOR INTERNATIONAL DISCIPLE-MAKING PARTNERSHIP (IDP)</h3>
+  <ul>
+    <li>Bachelor’s degree holder</li>
+    <li>Strong administrative and coordination skills</li>
+    <li>Must be able to work under pressure with little supervision</li>
+    <li>Good reporting and communication skills are required</li>
+    <li>A CCF Dgroup Leader is a plus</li>
+    <li>Knowledge of Bahasa is a major plus but not a requirement</li>
+    <li>Preferably male and physically fit</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>FULL STACK MOBILE APP DEVELOPER</h3>
+  <ul>
+    <li>A graduate of a Bachelor’s degree course related to Computer Science and App Development or any related course</li>
+    <li>3-5 years experience in related Mobile application development (Either Android or iOS)</li>
+    <li>Proven track record in developing and deploying Mobile Apps</li>
+    <li>Ability to integrate with and incorporate code from team members is a must</li>
+    <li>Experience in the industry-standard Native Mobile development languages is a must (Kotlin / Swift)</li>
+    <li>Experience in SQL is a must</li>
+    <li>Experience in Agile development environment is a plus</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>HR SPECIALIST (CULTURE AND LEARNING)</h3>
+  <ul>
+    <li>Graduate of Psychology or any related course</li>
+    <li>Excellent oral and written English communication skills</li>
+    <li>With at least 4 years’ relevant work experience in the same role</li>
+    <li>Good organizational skills and detail-oriented</li>
+    <li>Experience in research and project management</li>
+    <li>Experience in planning and implementing company-wide events</li>
+    <li>Must be a Bible-believing Christian, preferably part of a Discipleship Group</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>HR INTERN</h3>
+  <ul>
+    <li>Currently enrolled in a college or university program, pursuing a degree in Psychology, Behavioral Science, Social Science, Management or a related field</li>
+    <li>Strong interpersonal and communication skills</li>
+    <li>Ability to maintain confidentiality and handle sensitive information with professionalism</li>
+    <li>Detail-oriented with excellent organizational skills</li>
+    <li>Proficiency in Microsoft Office Suite (Word, Excel, PowerPoint)</li>
+    <li>Ability to work independently and as part of a team</li>
+    <li>Eagerness to learn and grow in the field of HR</li>
+    <li>Preferably part of a Discipleship group</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>SATELLITE ADMIN AND MINISTRY COORDINATOR (SAMC) – Various CCF Satellites</h3>
+  <ul>
+    <li>Bachelor degree holder</li>
+    <li>Excellent written and oral communication</li>
+    <li>Excellent process analytical skills</li>
+    <li>Working knowledge in MS Excel and MS Word</li>
+    <li>Proficient in MS Office applications</li>
+    <li>Good organizational skills and attention to details</li>
+    <li>Independent thinker and can work without constant supervision</li>
+    <li>Must be a Bible-believing Christian</li>
+  </ul>
+</div>
+
+<div class="job-card" style="grid-column: span 2; text-align: center; background: none; box-shadow: none;">
+  <h2 style="margin: 0; color: #333;">Job Vacancies for Mt. Makiling Recreation Center</h2>
+  <p style="margin: 5px 0 20px; font-size: 16px; color: #555;">
+    Brgy. San Bartolome, Sto. Tomas Batangas
+  </p>
+</div>
+
+<div class="job-card">
+  <h3>FINANCE ANALYST (GENERAL LEDGER) — Mt. Makiling Recreation Center</h3>
+  <ul>
+    <li>University/Bachelor’s degree in Accounting and Finance</li>
+    <li>Knowledgeable in accounting principles, financial statements, and generally accepted accounting principles (GAAP)</li>
+    <li>Familiar with financial analysis, budgeting, forecasting, and internal controls</li>
+    <li>Familiar with accounting software and enterprise resource planning (ERP) systems</li>
+    <li>Strong attention to detail and accuracy in financial data management</li>
+    <li>Ability to perform variance analysis and interpret financial results effectively</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>FOOD AND BEVERAGE (F&B) COORDINATOR — Mt. Makiling Recreation Center</h3>
+  <ul>
+    <li><strong>Education:</strong> Bachelor’s Degree in Hotel and Restaurant Management, Tourism, or any related course</li>
+    <li><strong>Experience:</strong> 5 years of experience in F&B Operations</li>
+    <li><strong>Qualifications:</strong> Excellent Oral and Written Communication Skills</li>
+    <li>Excellent Organizational & Planning Skills</li>
+    <li>Personable and Pleasant</li>
+    <li>Complaint Handling Skills</li>
+  </ul>
+</div>
+
+<div class="job-card">
+  <h3>HR AND ADMIN LEAD — Mt. Makiling Recreation Center</h3>
+  <ul>
+    <li>Bachelor’s degree in Human Resources, Business Administration, or a related field (preferred)</li>
+    <li>At least 3-5 years of experience in HR, administration, or procurement roles, with at least 1-2 years of experience in a leadership position</li>
+    <li>Bible-believing Christian</li>
+    <li>Proven ability to manage in a matrix structure, balancing multiple reporting lines and priorities</li>
+  </ul>
+</div>
+
+  </div>
+</body>
+</html>

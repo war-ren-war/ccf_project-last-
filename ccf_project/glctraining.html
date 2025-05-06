@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Global Leadership Center - My Trainings</title>
+  <style>
+    /* Reset default margin and padding for all elements */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Body styling */
+    body {
+      background: url('background.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    /* Container for all content */
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Header Styling */
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    /* Journey section with padding and styling */
+    .journey-section {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      margin-top: 40px;
+    }
+
+    .journey-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* Grid container for course items */
+    .courses-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* Individual course card styling */
+    .course {
+      flex: 1 1 250px;
+      max-width: 300px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    /* Hover effect for course cards */
+    .course:hover {
+      transform: scale(1.05);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .course-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* Completed text styling */
+    .completed {
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 10px;
+    }
+
+    /* Progress bar styling */
+    .progress {
+      width: 100%;
+      height: 6px;
+      background-color: #ddd;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+
+    /* Fill of the progress bar */
+    .progress-fill {
+      height: 100%;
+      background-color: #4CAF50;
+      width: 0%;
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+
+    /* Done button styling */
+    .done-button {
+      margin-top: 15px;
+      padding: 8px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Button hover effect */
+    .done-button:hover {
+      background-color: #218838;
+    }
+
+    /* Responsive design for tablets and mobile devices */
+    @media (max-width: 768px) {
+      .course {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .course {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Global Leadership Center - My Trainings</h1>
+    
+    <!-- Journey Section -->
+    <div class="journey-section">
+      <div class="journey-title">Life Journey</div>
+
+      <!-- Courses Grid -->
+      <div class="courses-grid">
+
+        <!-- Course Item 1 -->
+        <div class="course" data-total="1">
+          <div class="course-title">#LIFEGOALS</div>
+          <div class="completed">Completed 0 of 1</div>
+          <div class="progress"><div class="progress-fill"></div></div>
+        </div>
+
+        <!-- Course Item 2 -->
+        <div class="course" data-total="1">
+          <div class="course-title">Introduction to GLC</div>
+          <div class="completed">Completed 0 of 1</div>
+          <div class="progress"><div class="progress-fill"></div></div>
+        </div>
+
+        <!-- Course Item 3 -->
+        <div class="course" data-total="6">
+          <div class="course-title">GLC 1</div>
+          <div class="completed">Completed 0 of 6</div>
+          <div class="progress"><div class="progress-fill"></div></div>
+        </div>
+
+        <!-- Course Item 4 -->
+        <div class="course" data-total="6">
+          <div class="course-title">GLC 2</div>
+          <div class="completed">Completed 0 of 6</div>
+          <div class="progress"><div class="progress-fill"></div></div>
+        </div>
+
+        <!-- Course Item 5 -->
+        <div class="course" data-total="7">
+          <div class="course-title">GLC 3 Lead</div>
+          <div class="completed">Completed 0 of 7</div>
+          <div class="progress"><div class="progress-fill"></div></div>
+        </div>
+
+        <!-- Course Item 6 -->
+        <div class="course" data-total="1">
+          <div class="course-title">GLC Facilitator's Training</div>
+          <div class="completed">Completed 0 of 1</div>
+          <div class="progress"><div class="progress-fill"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Adding the functionality for the "Done" button
+    document.querySelectorAll('.course').forEach(course => {
+      course.addEventListener('click', () => {
+        if (!course.querySelector('.done-button')) {
+          const button = document.createElement('button');
+          button.innerText = 'Mark as Done';
+          button.className = 'done-button';
+
+          const total = parseInt(course.dataset.total);
+          const completedDiv = course.querySelector('.completed');
+          const progressFill = course.querySelector('.progress-fill');
+
+          let done = false;
+
+          // Button click handler to toggle progress and completion
+          button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (!done) {
+              completedDiv.innerText = `Completed ${total} of ${total}`;
+              progressFill.style.width = '100%';
+              done = true;
+            } else {
+              completedDiv.innerText = `Completed 0 of ${total}`;
+              progressFill.style.width = '0%';
+              done = false;
+              button.remove(); // Remove button if undone
+            }
+          });
+
+          course.appendChild(button);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

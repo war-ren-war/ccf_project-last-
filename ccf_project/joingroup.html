@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dgroup Preferences</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1-crypto-js.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background-color: #f7f7f7;
+    }
+
+    #page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background-color: #1ab394;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .navbar-header {
+      font-size: 20px;
+    }
+
+    .navbar .navbar-top-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .navbar-top-links a {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 80px 20px 20px; /* Adjusted padding to avoid navbar overlap */
+      overflow-y: auto; /* Enable vertical scroll */
+    }
+
+    .form-container {
+      background-color: white;
+      width: 100%;
+      max-width: 600px;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #1ab394;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input[type="text"], select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .radio-group {
+      margin-bottom: 15px;
+    }
+
+    .radio-group input {
+      margin-right: 10px;
+    }
+
+    button {
+      background-color: #1ab394;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #17a085;
+    }
+
+    .footer {
+      background-color: #2f4050;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .suggestion-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      display: none;
+    }
+
+    .suggestion-container h3 {
+      color: #1ab394;
+      margin-bottom: 10px;
+    }
+
+    .suggestion-container p {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="page-wrapper">
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-header">
+      <strong>CCF Small Groups</strong>
+    </div>
+    <div class="navbar-top-links">
+      <span>Welcome to CCF Small Groups</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="form-container">
+      <h1>Dgroup Preferences</h1>
+      <p>We'd like to connect you to a Dgroup considering these additional details.</p>
+
+      <form id="preferences-form">
+        <div class="radio-group">
+          <label>Mode of Meeting *</label>
+          <input type="radio" name="meeting_mode" value="Online"> Online<br>
+          <input type="radio" name="meeting_mode" value="Physical"> Physical<br>
+          <input type="radio" name="meeting_mode" value="Hybrid"> Hybrid (Online & Physical)
+        </div>
+
+        <div class="radio-group">
+          <label>Language *</label>
+          <input type="radio" name="language" value="Filipino/English"> Filipino/English<br>
+          <input type="radio" name="language" value="English only"> English only<br>
+          <input type="radio" name="language" value="Filipino only"> Filipino only<br>
+          <input type="radio" name="language" value="Other"> Other
+        </div>
+
+        <h3>Preferred Dgroup Meeting place</h3>
+
+        <label for="country">I would like to be connected to a Dgroup in (Country) near (CCF satellite). *</label>
+        <select id="country" name="country">
+          <option value="">Please select</option>
+          <!-- Add country options here -->
+        </select>
+
+        <label for="landmark">Landmark/Area accessible to me *</label>
+        <input type="text" id="landmark" name="landmark" placeholder="Location for Dgroup meeting">
+
+        <label>Is it your first time to join a CCF Dgroup? *</label>
+        <input type="radio" name="first_time" value="Yes"> Yes<br>
+        <input type="radio" name="first_time" value="No"> No
+
+        <label for="remarks">Please share with us any information that may help us in connecting you to a Dgroup.</label>
+        <textarea id="remarks" name="remarks" rows="4" placeholder="e.g. other available day & time for Dgroup"></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- Additional Submit Button Below the Form -->
+      <button id="another-submit" onclick="handleAnotherSubmit()">Submit Again</button>
+
+    </div>
+  </div>
+
+  <!-- Suggestion Container -->
+  <div id="suggestion-container" class="suggestion-container">
+    <h3>Thank you for submitting your preferences!</h3>
+    <p>Your preferences have been recorded. Based on your choices, we suggest that you consider the following:</p>
+    <ul>
+      <li>If you're looking for a hybrid meeting, check availability for both online and physical locations.</li>
+      <li>If this is your first time, we recommend joining an introductory session for newcomers.</li>
+      <li>Provide any specific time constraints to help us better match your schedule.</li>
+    </ul>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>
+      CCF Small Groups © 2025 | 
+      <a href="/terms/">Terms and Conditions</a> | 
+      <a href="/privacy-policy/">Privacy Policy</a> <br>
+      Contact: 
+      <a href="mailto:discipleship@ccf.org.ph">discipleship@ccf.org.ph</a> (DGroups)
+    </p>
+  </div>
+</div>
+
+<script>
+  // Hash form data when the form is submitted
+  document.getElementById("preferences-form").addEventListener("submit", function(event) {
+    event.preventDefault();  // Prevent form submission to keep on the same page
+
+    // Gather form data
+    const formData = new FormData(this);
+    let formString = '';
+    formData.forEach((value, key) => {
+      formString += `${key}: ${value}\n`;
+    });
+
+    // Hash the form data (SHA-256)
+    const hashedData = CryptoJS.SHA256(formString).toString(CryptoJS.enc.Base64);
+    console.log("Hashed Data:", hashedData);
+
+    // Show suggestion container after submission
+    document.getElementById("suggestion-container").style.display = 'block';
+  });
+
+  // Handle additional submit button click
+  function handleAnotherSubmit() {
+    alert("You can trigger different actions with this button if needed.");
+    // You can add custom actions here for the second button
+  }
+</script>
+
+</body>
+</html>

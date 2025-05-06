@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CCF Small Groups</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      height: 100vh;
+      background-color: #343a40;
+      color: #ffffff;
+    }
+    .sidebar a {
+      color: #ffffff;
+    }
+    .logo-section {
+      text-align: center;
+      padding: 20px;
+    }
+    .content-section {
+      padding: 20px;
+      overflow-y: auto;
+      height: 100vh;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar p-3">
+      <div class="logo-section">
+        <img src="avatar-placeholder.png" alt="Profile" class="rounded-circle" width="80">
+        <h5>
+          <a href="profile.html" onclick="loadProfile()" style="color: #fff; text-decoration: underline;">Warren Pagsuyuin</a>
+        </h5>
+        <p style="margin-top: 5px; font-size: 0.9rem; color: #ced4da;">Admin</p>
+      </div>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="#" onclick="loadContent('count.html')">Dashboard</a>
+        <a class="nav-link" href="#" onclick="loadContent('dashboardHomepage.html')">Home</a>
+        <a class="nav-link" href="#" onclick="loadContent('dgroupinfo.html')">Small Groups</a>
+        <a class="nav-link" href="#" onclick="loadContent('glctraining.html')">GLC</a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-section flex-grow-1">
+      <!-- Initially load the "Home" content (dashboardHomepage.html) -->
+      <iframe id="mainFrame" src="dashboardHomepage.html"></iframe>
+    </div>
+  </div>
+
+  <script>
+    // Function to load content in the iframe
+    function loadContent(page) {
+      document.getElementById('mainFrame').src = page;
+    }
+
+    // Function to load the profile page
+    function loadProfile() {
+      fetch('profile.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('profile-container').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Error loading profile:', error);
+        });
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

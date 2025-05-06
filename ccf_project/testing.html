@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CCF Small Groups</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #f7f7f7;
+    }
+
+    .navbar {
+      background-color: #1ab394;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .navbar-header {
+      font-size: 20px;
+    }
+
+    .navbar .navbar-top-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .navbar-top-links a {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .wrapper-content {
+      flex: 1;
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .column {
+      width: 45%;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .column img {
+      max-width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .column h3 {
+      margin: 10px 0;
+      color: #1ab394;
+    }
+
+    .column p {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      background-color: #1ab394;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .footer {
+      background-color: #2f4050;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    function logoutRedirect() {
+      const newTab = window.open('home.html', '_blank');
+      if (newTab) {
+        newTab.focus(); // bring it to front
+        window.close(); // try to close the dashboard tab
+      } else {
+        alert("Popup blocked! Please allow popups to open home.html.");
+        window.location.href = 'home.html'; // fallback
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <div id="page-wrapper">
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="navbar-header">
+        <strong>CCF Dashboard</strong>
+      </div>
+      <div class="navbar-top-links">
+        <span>Welcome to CCF Small Groups</span>
+        <a onclick="logoutRedirect()"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="wrapper-content">
+      <!-- GLC Column -->
+      <div class="column">
+        <img src="/assets/img/glc_flat_logo.png" alt="GLC Logo" />
+        <h3>Global Leadership Center</h3>
+        <p>
+          The Global Leadership Center is CCF’s official training arm that equips one in his discipleship journey towards Christ-likeness. Character development and spiritual multiplication are emphasized as one moves from being a seeker to becoming a servant-leader in God’s kingdom.
+        </p>
+        <a href="/glc/class/my-classes" class="btn btn-primary">My Trainings</a>
+      </div>
+
+      <!-- Small Groups Column -->
+      <div class="column">
+        <img src="/assets/img/small_groups.png" alt="Small Groups Logo" />
+        <h3>Small Groups</h3>
+        <p>
+          Life is meant to be lived in love. You don’t have to go through life alone. Be part of a community that will love, encourage, pray and help you grow. Join a dgroup today!
+        </p>
+        <a href="/group/my-groups" class="btn btn-primary">My Groups</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>
+        CCF Small Groups © 2025 | 
+        <a href="/terms/">Terms and Conditions</a> | 
+        <a href="/privacy-policy/">Privacy Policy</a> <br>
+        Contact: 
+        <a href="mailto:discipleship@ccf.org.ph">discipleship@ccf.org.ph</a> (DGroups) or 
+        <a href="mailto:glc@ccf.org.ph">glc@ccf.org.ph</a> (GLC)
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
